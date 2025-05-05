@@ -11,9 +11,9 @@ TESTS=$(TEST_SRCS:.c=.exe)
 # Stage 1
 
 smart: $(OBJS)
-	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
+	$(CC) $(CFLAGS) -I./ -o $@ $^ $(LDFLAGS)
 
-$(OBJS): smart.h 
+# $(OBJS): smart.h 
 
 test/%.exe: smart test/%.c
 	./smart -Iinclude -Itest -c -o test/$*.o test/$*.c
