@@ -697,7 +697,21 @@ static FileType get_file_type(char *filename) {
   error("<command line>: unknown file extension: %s", filename);
 }
 
+void my_assert(int pred, const char* msg) {
+  if (!pred)
+      fprintf(stderr, "ERROR: %s\n", msg);
+}
 int main(int argc, char **argv) {
+
+  // char v[50];
+  int version;
+  argparser ap = argparser_create(argc, argv, PARSEMODE_LENIENT);
+  argparser_add(&ap, "-v", "--version",  ARGTYPE_BOOL, &version, "V arg");
+  argparser_parse(&ap);
+  //my_assert(version != 0.0, "v was not modified");
+  // fprintf(stdout, "v: %d\n", version);
+
+
   atexit(cleanup);
   init_macros();
   parse_args(argc, argv);

@@ -17,7 +17,7 @@
 #include <sys/wait.h>
 #include <time.h>
 #include <unistd.h>
-
+#include "argparser.h"
 
 #define MAX(x, y) ((x) < (y) ? (y) : (x))
 #define MIN(x, y) ((x) < (y) ? (x) : (y))
