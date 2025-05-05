@@ -710,7 +710,11 @@ int main(int argc, char **argv) {
   argparser_parse(&ap);
   //my_assert(version != 0.0, "v was not modified");
   // fprintf(stdout, "v: %d\n", version);
-
+  if(version)
+  {
+    printf("Ver: 0.0.1\n");
+    exit(0);
+  }
 
   atexit(cleanup);
   init_macros();
