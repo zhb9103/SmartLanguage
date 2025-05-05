@@ -1,4 +1,6 @@
-CFLAGS=-std=c11 -g -fno-common -Wall -Wno-switch
+
+CC=gcc
+CFLAGS=-std=c11 -g -fno-common -Wall -Wno-switch -fpermissive
 
 SRCS=$(wildcard *.c)
 OBJS=$(SRCS:.c=.o)
@@ -11,7 +13,7 @@ TESTS=$(TEST_SRCS:.c=.exe)
 smart: $(OBJS)
 	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
 
-$(OBJS): smart.h
+$(OBJS): smart.h 
 
 test/%.exe: smart test/%.c
 	./smart -Iinclude -Itest -c -o test/$*.o test/$*.c
@@ -22,6 +24,8 @@ test: $(TESTS)
 	test/driver.sh ./smart
 
 test-all: test test-stage2
+
+all: test-all
 
 # Stage 2
 
